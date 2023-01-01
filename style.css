@@ -10,7 +10,6 @@ body {
 .icon {
     width: 24px;
     height: 24px;
-
 }
 
 /* ========================== HEADER ======================== */
@@ -186,7 +185,7 @@ header>div {
 
 #note {
     height: 150px;
-    width: 28%;
+    width: 380px;
     box-shadow: 1px 1px 2px 1px grey;
     border-radius: 15px;
     padding: 16px;
@@ -213,7 +212,7 @@ header>div {
 .titelPin img {
     border-radius: 50%;
     border: 4px solid transparent;
-
+    cursor: pointer;
 }
 
 .titelPin img:hover {
@@ -247,6 +246,7 @@ header>div {
     background: none;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .delete button:hover {
@@ -263,15 +263,21 @@ header>div {
 }
 
 /* =============================== Responsiveness ========================= */
-@media(max-width: 1210px) {
+@media(max-width: 1262px) {
     #note {
-        width: 41%;
+        width: 340px;
     }
 }
 
-@media(max-width: 1105px) {
+@media(max-width: 1184px) {
     #note {
-        width: 100%;
+        width: 300px;
+    }
+}
+
+@media(max-width: 1102px) {
+    #note {
+        width: 270px;
     }
 }
 
@@ -282,6 +288,10 @@ header>div {
 
     .search input {
         width: 365px;
+    }
+
+    #note {
+        width: 100%;
     }
 }
 

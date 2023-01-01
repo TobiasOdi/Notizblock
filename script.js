@@ -29,7 +29,6 @@ function render(){
         <div id="note">
                 <div class="titelPin">
                     <input id="title" type="text" placeholder="${titel}">
-                    <img src="./img/9025901_push_pin_icon.png" class="icon">
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
@@ -54,7 +53,6 @@ function renderTrash() {
         <div id="note">
                 <div class="titelPin">
                     <input id="title" type="text" placeholder="${titelTrash}">
-                    <img src="./img/9025901_push_pin_icon.png" class="icon">
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${textTrash}</textarea>
@@ -127,7 +125,8 @@ function load() {
 
 /* ====================== Suchfunktion ========================== */
 
-function searchD() {                                    // Suchfunktion
+function searchD() {                                           // Suchfunktion
+
     let searchD = document.getElementById('searchD').value;
     searchD = searchD.toLowerCase();                          // Grossbuchstaben in Kleinbuchstaben umwandeln
 
@@ -145,7 +144,6 @@ function searchD() {                                    // Suchfunktion
         <div id="note">
                 <div class="titelPin">
                     <input id="title" type="text" placeholder="${titel}">
-                    <img src="./img/9025901_push_pin_icon.png" class="icon">
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
@@ -155,12 +153,12 @@ function searchD() {                                    // Suchfunktion
                     <button onclick="deleteNote(${i})">Löschen</button>
                 </div>
         </div>`;
+
         } else if(titelTrash.toLowerCase().includes(searchD) || textTrash.toLowerCase().includes(searchD)) {
                 content.innerHTML += `
             <div id="note">
                 <div class="titelPin">
                     <input id="title" type="text" placeholder="${titelTrash}">
-                    <img src="./img/9025901_push_pin_icon.png" class="icon">
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${textTrash}</textarea>
@@ -170,9 +168,11 @@ function searchD() {                                    // Suchfunktion
                     <button onclick="deletdefinitely(${t})">Löschen</button>
                 </div>
             </div>`;
-            }
-        }
-    }
+            } 
+        } 
+ }
+
+
 
 function searchM() {                                    // Suchfunktion
     let searchM = document.getElementById('searchM').value;
@@ -192,7 +192,6 @@ function searchM() {                                    // Suchfunktion
         <div id="note">
                 <div class="titelPin">
                     <input id="title" type="text" placeholder="${titel}">
-                    <img src="./img/9025901_push_pin_icon.png" class="icon">
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
@@ -207,7 +206,6 @@ function searchM() {                                    // Suchfunktion
             <div id="note">
                 <div class="titelPin">
                     <input id="title" type="text" placeholder="${titelTrash}">
-                    <img src="./img/9025901_push_pin_icon.png" class="icon">
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${textTrash}</textarea>
