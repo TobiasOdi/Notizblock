@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <title>Notizen</title>
+
+    <!-- =========== Schriftart =========== -->
+    <link rel="stylesheet" href="./fonts.css">
+
+    <script src="./script.js"></script>
+
+  </head>
+
+  <body onload="render()">
+
+<!--      ============================== HEADER =============================== -->
+    <header id="header">
+
+      <div class="head1">
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div>
+          <p><b>YOUR</b> Notes</p>
+        </div>
+      </div>
+      
+      <div class="search">
+        <div>
+          <div><img src="./img/search.png" class="icon" alt="Bilder einer Lupe"></div>
+          <div><input id="searchD" onkeydown="searchD()" type="text" placeholder="Suchen" /></div>
+        </div>
+      </div>
+
+      <div class="settings">
+        <div onclick="window.location.reload()"><img src="./img/load.png" class="icon" /></div>
+        <div><img src="./img/settings-3-48.jpg" class="icon" /></div>
+      </div>
+    </header>
+
+    <section id="main">
+
+      <!--========================== Sidebar ======================== -->
+      <!-- ============= Desktop Ansicht ============= -->
+      <article class="sideBar">
+        <div onclick="render(), activeNotes()" class="cards notes" id="notes">
+          <img src="./img/9042676_light_bulb_icon.png" class="icon" />
+          <a>Notizen</a>
+        </div>
+        <div onclick="renderTrash(), activeTrash()" class="cards trash" id="trash">
+          <img src="./img/9025901_push_pin_icon.png" class="icon" />
+          <a>Papierkorb</a>
+        </div>
+      </article>
+
+      <!-- ============ Mobile Ansicht ============ -->
+      <article class="sideBar nav-bar">
+        <div class="searchM">
+          <div>
+            <div><img src="./img/search.png" class="icon" alt="Bilder einer Lupe"></div>
+            <div><input id="searchM" onkeydown="searchM()" type="text" placeholder="Suchen" /></div>
+          </div>
+        </div>
+        <div onclick="render(), activeNotesM()" class="cards notes" id="notesM">
+          <img src="./img/9042676_light_bulb_icon.png" class="icon" />
+          <a>Notizen</a>
+        </div>
+        <div onclick="renderTrash(), activeTrashM()" class="cards trash" id="trashM">
+          <img src="./img/9025901_push_pin_icon.png" class="icon" />
+          <a>Papierkorb</a>
+        </div>
+      </article>
+
+      <!--========================== Content ======================== -->
+
+      <article id="mainContent">
+        <article id="content">
+      </article>
+    </section>
+
+
+    <!-- ============== Content for rendering notes ===================== -->
+
+              <!-- <div id="note">
+                    <div class="titelPin">
+                        <input id="titel" type="text" placeholder="Titel">
+                        <img onclick="addNote()" src="./img/9025901_push_pin_icon.png" class="icon">
+                    </div>
+                    <div class="text">
+                        <textarea id="text" cols="32" rows="7" placeholder="Notiz schreiben..."></textarea>
+                    </div>
+                </div> -->
+
+    <!-- <div id="note">
+                <div class="titelPin">
+                    <input id="title" type="text" placeholder="${titel}">
+                    <img src="./img/9025901_push_pin_icon.png" class="icon">
+                </div>
+                <div class="text">
+                    <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
+                </div>
+                <div class="delete">
+                    <span></span>
+                    <button onclick="deleteNote(${i})">Löschen</button>
+                </div>
+        </div> -->
+
+    <!-- ============== Content for rendering trash ===================== -->
+
+<!--      <div id="note">
+                <div class="titelPin">
+                    <input id="title" type="text" placeholder="${titelTrash}">
+                    <img src="./img/9025901_push_pin_icon.png" class="icon">
+                </div>
+                <div class="text">
+                    <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${textTrash}</textarea>
+                </div>
+                <div class="delete">
+                    <p>Im Papierkorb</p>
+                    <button onclick="deletdefinitely(${t})">Löschen</button>
+                </div>
+      </div>
+ -->
+
+  <script>
+    hamburger = document.querySelector(".hamburger");
+      hamburger.onclick = function toggle() {
+        navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+};
+  </script>
+  </body>
+</html>
