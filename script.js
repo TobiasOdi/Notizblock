@@ -172,8 +172,6 @@ function searchD() {                                           // Suchfunktion
         } 
  }
 
-
-
 function searchM() {                                    // Suchfunktion
     let searchM = document.getElementById('searchM').value;
     searchM = searchM.toLowerCase();                          // Grossbuchstaben in Kleinbuchstaben umwandeln
