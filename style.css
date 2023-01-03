@@ -116,11 +116,11 @@ header>div {
 }
 
 .sideBar>div:first-of-type {
-    background-color: rgb(224, 193, 54);
+    background-color: rgb(254,239,195);
 }
 
 .nav-bar>div:nth-of-type(2) {
-    background-color: rgb(224, 193, 54);
+    background-color: rgb(254,239,195);
 }
 
 .nav-bar {
@@ -140,15 +140,15 @@ header>div {
 }
 
 .notes:link {
-    background-color: rgb(224, 193, 54);
+    background-color: rgb(254,239,195);
 }
 
 .notes:active {
-    background-color: rgb(224, 193, 54);
+    background-color: rgb(254,239,195);
 }
 
 .notes:visited {
-    background-color: rgb(224, 193, 54);
+    background-color: rgb(254,239,195);
 }
 
 .cards {
@@ -163,7 +163,7 @@ header>div {
 }
 
 .cards:hover {
-    background-color: rgb(218, 220, 224);
+    box-shadow: 1px 1px 5px 1px grey;
 }
 
 /* ========================== CONTENT ================================== */
@@ -188,13 +188,13 @@ header>div {
 #mainContent>div:last-of-type {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     margin-top: 0.5rem;
 }
 
 #noteFix {
-    height: 120px;
+    height: 150px;
     box-shadow: 1px 1px 2px 1px rgb(224, 193, 54);
     border-radius: 15px;
     padding: 1rem;
@@ -206,7 +206,7 @@ header>div {
 }
 
 #note {
-    height: 150px;
+    height: 180px;
     width: 320px;
     box-shadow: 1px 1px 2px 1px grey;
     border-radius: 15px;
@@ -259,19 +259,32 @@ header>div {
 
 .delete {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    margin-bottom: 0.5rem;
 }
 
 .delete button {
     background: none;
+    background-color: lightgray;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .delete button:hover {
-    background-color: lightgray;
+    background-color: grey;
+}
+
+.delete > div:first-of-type {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+}
+
+.delete > div:last-of-type {
+    width: 100%;
 }
 
 .delete p {
@@ -281,6 +294,7 @@ header>div {
     padding: 1px 6px 1px 6px;
     margin: 0;
     font-size: 0.8rem;
+    text-align: center;
 }
 
 /* =============================== Responsiveness ========================= */
@@ -325,9 +339,14 @@ header>div {
 }
 
 @media(max-width: 890px) {
-    header, #main {
+    header {
         padding-right: 1.5rem;
         padding-left: 1.5rem;
+    }
+
+    #main {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
     }
 
     .search>div {
@@ -384,7 +403,7 @@ header>div {
     .nav-bar {
         display: none;
         width: 100%;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem;
         border-bottom: 1px solid rgb(218, 220, 224);
     }
 
@@ -455,3 +474,13 @@ header>div {
         min-width: 180px;
     }
 }
+
+@media(max-width: 410px) {
+
+  /*   .delete {
+        flex-direction: column;
+        height: 50px;
+    } */
+}
+
+

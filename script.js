@@ -24,7 +24,6 @@ function render(){
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
                 </div>
                 <div class="delete">
-                    <span></span>
                     <button onclick="deleteNote(${i})">Löschen</button>
                 </div>
         </div>`;
@@ -44,15 +43,18 @@ function renderTrash() {
         <div id="note">
                 <div class="titelPin">
                     <input id="title" type="text" placeholder="${titelTrash}">
+
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${textTrash}</textarea>
                 </div>
                 <div class="delete">
-                    <p>Im Papierkorb</p>
                     <div>
                         <button onclick="restore(${t})">Wiederherstellen</button>
                         <button onclick="deletdefinitely(${t})">Löschen</button>
+                    </div>
+                    <div>
+                        <p>Gelöscht</p>
                     </div>
                 </div>
       </div>`;
@@ -66,6 +68,20 @@ function addNote() {
     texts.push(text.value);
     render();
     save();
+
+    document.getElementById('contentFix').innerHTML = '';
+    document.getElementById('contentFix').innerHTML += `
+    <div>
+        <div id="noteFix">
+        <div class="titelPin">
+            <input id="titel" type="text" placeholder="Titel">
+            <img onclick="addNote(), activeNotes()" src="./img/9025901_push_pin_icon.png" class="icon">
+        </div>
+        <div class="text">
+            <textarea id="text" cols="32" rows="7" placeholder="Notiz schreiben..."></textarea>
+        </div>
+        </div>
+    </div>`;
 }
 
 function deleteNote(i) {
@@ -130,7 +146,6 @@ function load() {
 /* ====================== Suchfunktion ========================== */
 
 function searchD() {                                           // Suchfunktion
-
     let searchD = document.getElementById('searchD').value;
     searchD = searchD.toLowerCase();                          // Grossbuchstaben in Kleinbuchstaben umwandeln
 
@@ -153,25 +168,30 @@ function searchD() {                                           // Suchfunktion
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
                 </div>
                 <div class="delete">
-                    <span></span>
                     <button onclick="deleteNote(${i})">Löschen</button>
                 </div>
         </div>`;
 
         } else if(titelTrash.toLowerCase().includes(searchD) || textTrash.toLowerCase().includes(searchD)) {
                 content.innerHTML += `
-            <div id="note">
-                <div class="titelPin">
-                    <input id="title" type="text" placeholder="${titelTrash}">
-                </div>
-                <div class="text">
-                    <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${textTrash}</textarea>
-                </div>
-                <div class="delete">
-                    <p>Im Papierkorb</p>
-                    <button onclick="deletdefinitely(${t})">Löschen</button>
-                </div>
-            </div>`;
+                <div id="note">
+                    <div class="titelPin">
+                        <input id="title" type="text" placeholder="${titelTrash}">
+
+                    </div>
+                    <div class="text">
+                        <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${textTrash}</textarea>
+                    </div>
+                    <div class="delete">
+                        <div>
+                            <button onclick="restore(${t})">Wiederherstellen</button>
+                            <button onclick="deletdefinitely(${t})">Löschen</button>
+                        </div>
+                        <div>
+                            <p>Gelöscht</p>
+                        </div>
+                    </div>
+                </div>`;
             } 
         } 
  }
@@ -199,28 +219,33 @@ function searchM() {                                    // Suchfunktion
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
                 </div>
                 <div class="delete">
-                    <span></span>
                     <button onclick="deleteNote(${i})">Löschen</button>
                 </div>
         </div>`;
+
         } else if(titelTrash.toLowerCase().includes(searchM) || textTrash.toLowerCase().includes(searchM)) {
                 content.innerHTML += `
             <div id="note">
                 <div class="titelPin">
                     <input id="title" type="text" placeholder="${titelTrash}">
+
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${textTrash}</textarea>
                 </div>
                 <div class="delete">
-                    <p>Im Papierkorb</p>
-                    <button onclick="deletdefinitely(${t})">Löschen</button>
+                    <div>
+                        <button onclick="restore(${t})">Wiederherstellen</button>
+                        <button onclick="deletdefinitely(${t})">Löschen</button>
+                    </div>
+                    <div>
+                        <p>Gelöscht</p>
+                    </div>
                 </div>
             </div>`;
             }
         }
     }
-
 
 /* ====================== Sidebar Funktionen ========================== */
 
@@ -229,9 +254,9 @@ function activeNotes() {
     let trash = document.getElementById('trash');
     let notesM = document.getElementById('notesM');
     let trashM = document.getElementById('trashM');
-    notes.style.backgroundColor = "rgb(224, 193, 54)";
+    notes.style.backgroundColor = "rgb(254,239,195)";
     trash.style.backgroundColor = "rgb(255, 255, 255)";
-    notesM.style.backgroundColor = "rgb(224, 193, 54)";
+    notesM.style.backgroundColor = "rgb(254,239,195)";
     trashM.style.backgroundColor = "rgb(255, 255, 255)";
 }
 
@@ -241,9 +266,9 @@ function activeTrash() {
     let notesM = document.getElementById('notesM');
     let trashM = document.getElementById('trashM');
     notes.style.backgroundColor = "rgb(255, 255, 255)";
-    trash.style.backgroundColor = "rgb(224, 193, 54)";
+    trash.style.backgroundColor = "rgb(254,239,195)";
     notesM.style.backgroundColor = "rgb(255, 255, 255)";
-    trashM.style.backgroundColor = "rgb(224, 193, 54)";
+    trashM.style.backgroundColor = "rgb(254,239,195)";
 
 }
 
@@ -252,9 +277,9 @@ function activeNotesM() {
     let trashM = document.getElementById('trashM');
     let notes = document.getElementById('notes');
     let trash = document.getElementById('trash');
-    notesM.style.backgroundColor = "rgb(224, 193, 54)";
+    notesM.style.backgroundColor = "rgb(254,239,195)";
     trashM.style.backgroundColor = "rgb(255, 255, 255)";
-    notes.style.backgroundColor = "rgb(224, 193, 54)";
+    notes.style.backgroundColor = "rgb(254,239,195)";
     trash.style.backgroundColor = "rgb(255, 255, 255)";
 }
 
@@ -264,9 +289,9 @@ function activeTrashM() {
     let notes = document.getElementById('notes');
     let trash = document.getElementById('trash');
     notesM.style.backgroundColor = "rgb(255, 255, 255)";
-    trashM.style.backgroundColor = "rgb(224, 193, 54)";
+    trashM.style.backgroundColor = "rgb(254,239,195)";
     notes.style.backgroundColor = "rgb(255, 255, 255)";
-    trash.style.backgroundColor = "rgb(224, 193, 54)";
+    trash.style.backgroundColor = "rgb(254,239,195)";
 }
 
 
