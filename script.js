@@ -10,16 +10,6 @@ loadTrash();
 function render(){
     let content = document.getElementById('content');
     content.innerHTML = '';
-    content.innerHTML += `
-            <div id="note">
-                <div class="titelPin">
-                    <input id="titel" type="text" placeholder="Titel">
-                    <img onclick="addNote()" src="./img/9025901_push_pin_icon.png" class="icon">
-                </div>
-                <div class="text">
-                    <textarea id="text" cols="32" rows="7" placeholder="Notiz schreiben..."></textarea>
-                </div>
-            </div>`;
 
     for (i = 0; i < titels.length; i++) {
         let titel = titels[i];
@@ -39,6 +29,7 @@ function render(){
                 </div>
         </div>`;
     }
+
 }
 
 function renderTrash() {
@@ -59,7 +50,10 @@ function renderTrash() {
                 </div>
                 <div class="delete">
                     <p>Im Papierkorb</p>
-                    <button onclick="deletdefinitely(${t})">Löschen</button>
+                    <div>
+                        <button onclick="restore(${t})">Wiederherstellen</button>
+                        <button onclick="deletdefinitely(${t})">Löschen</button>
+                    </div>
                 </div>
       </div>`;
     }
@@ -82,6 +76,16 @@ function deleteNote(i) {
     render();
     save();
     saveTrash()
+}
+
+function restore(t) {
+    titels.push(titelsTrash[t]);
+    texts.push(textsTrash[t]);
+    titelsTrash.splice(t, 1);
+    textsTrash.splice(t, 1);
+    renderTrash();
+    saveTrash()
+    save();
 }
 
 function deletdefinitely(t) {
