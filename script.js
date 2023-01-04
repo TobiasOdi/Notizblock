@@ -148,6 +148,8 @@ function load() {
 function searchD() {                                           // Suchfunktion
     let searchD = document.getElementById('searchD').value;
     searchD = searchD.toLowerCase();                          // Grossbuchstaben in Kleinbuchstaben umwandeln
+    console.log(searchD);
+
 
     let content = document.getElementById('content');
     content.innerHTML = '';
@@ -184,8 +186,8 @@ function searchD() {                                           // Suchfunktion
                     </div>
                     <div class="delete">
                         <div>
-                            <button onclick="restore(${t})">Wiederherstellen</button>
-                            <button onclick="deletdefinitely(${t})">Löschen</button>
+                            <button onclick="restore(${i})">Wiederherstellen</button>
+                            <button onclick="deletdefinitely(${i})">Löschen</button>
                         </div>
                         <div>
                             <p>Gelöscht</p>
