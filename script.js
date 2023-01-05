@@ -1,6 +1,6 @@
-let titels = [];
+let titles = [];
 let texts = [];
-let titelsTrash = [];
+let titlesTrash = [];
 let textsTrash = [];
 
 
@@ -11,14 +11,14 @@ function render(){
     let content = document.getElementById('content');
     content.innerHTML = '';
 
-    for (i = 0; i < titels.length; i++) {
-        let titel = titels[i];
+    for (i = 0; i < titles.length; i++) {
+        let title = titles[i];
         let text = texts[i];
 
         content.innerHTML += `
         <div id="note">
-                <div class="titelPin">
-                    <input id="title" type="text" placeholder="${titel}">
+                <div class="titlePin">
+                    <input id="title" type="text" placeholder="${title}">
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
@@ -35,14 +35,14 @@ function renderTrash() {
     let content = document.getElementById('content');
     content.innerHTML = '';
 
-    for (t = 0; t < titelsTrash.length; t++) {
-        let titelTrash = titelsTrash[t];
+    for (t = 0; t < titlesTrash.length; t++) {
+        let titleTrash = titlesTrash[t];
         let textTrash = textsTrash[t];
 
         content.innerHTML += `
         <div id="note">
-                <div class="titelPin">
-                    <input id="title" type="text" placeholder="${titelTrash}">
+                <div class="titlePin">
+                    <input id="title" type="text" placeholder="${titleTrash}">
 
                 </div>
                 <div class="text">
@@ -62,32 +62,37 @@ function renderTrash() {
 }
 
 function addNote() {
-    let titel = document.getElementById('titel');
+    let title = document.getElementById('title');
     let text = document.getElementById('text');
-    titels.push(titel.value);
-    texts.push(text.value);
-    render();
-    save();
 
-    document.getElementById('contentFix').innerHTML = '';
-    document.getElementById('contentFix').innerHTML += `
-    <div>
-        <div id="noteFix">
-        <div class="titelPin">
-            <input id="titel" type="text" placeholder="Titel">
-            <img onclick="addNote(), activeNotes()" src="./img/9025901_push_pin_icon.png" class="icon">
-        </div>
-        <div class="text">
-            <textarea id="text" cols="32" rows="7" placeholder="Notiz schreiben..."></textarea>
-        </div>
-        </div>
-    </div>`;
+    if(title.value.length === 0) {
+
+    } else {
+        titles.push(title.value);
+        texts.push(text.value);
+        render();
+        save();
+    
+        document.getElementById('contentFix').innerHTML = '';
+        document.getElementById('contentFix').innerHTML += `
+        <div>
+            <div id="noteFix">
+            <div class="titlePin">
+                <input id="title" type="text" placeholder="Titel">
+                <img onclick="addNote(), activeNotes()" src="./img/9025901_push_pin_icon.png" class="icon">
+            </div>
+            <div class="text">
+                <textarea id="text" cols="32" rows="7" placeholder="Notiz schreiben..."></textarea>
+            </div>
+            </div>
+        </div>`;
+    }
 }
 
 function deleteNote(i) {
-    titelsTrash.push(titels[i]);
+    titlesTrash.push(titles[i]);
     textsTrash.push(texts[i]);
-    titels.splice(i, 1);
+    titles.splice(i, 1);
     texts.splice(i, 1);
     render();
     save();
@@ -95,9 +100,9 @@ function deleteNote(i) {
 }
 
 function restore(t) {
-    titels.push(titelsTrash[t]);
+    titles.push(titlesTrash[t]);
     texts.push(textsTrash[t]);
-    titelsTrash.splice(t, 1);
+    titlesTrash.splice(t, 1);
     textsTrash.splice(t, 1);
     renderTrash();
     saveTrash()
@@ -105,40 +110,40 @@ function restore(t) {
 }
 
 function deletdefinitely(t) {
-    titelsTrash.splice(t, 1);
+    titlesTrash.splice(t, 1);
     textsTrash.splice(t, 1);
     renderTrash();
     saveTrash();
 }
 
 function save() {
-    let titelsAsText = JSON.stringify(titels);       
-    localStorage.setItem('titels', titelsAsText);     
+    let titlesAsText = JSON.stringify(titles);       
+    localStorage.setItem('titles', titlesAsText);     
     let textsAsText = JSON.stringify(texts);
     localStorage.setItem('texts', textsAsText);
 }
 
 function saveTrash() {
-    let titelsTrashAsText = JSON.stringify(titelsTrash);       
-    localStorage.setItem('titelsTrash', titelsTrashAsText);     
+    let titlesTrashAsText = JSON.stringify(titlesTrash);       
+    localStorage.setItem('titlesTrash', titlesTrashAsText);     
     let textsTrashAsText = JSON.stringify(textsTrash);
     localStorage.setItem('textsTrash', textsTrashAsText);
 }
 
 function load() {
-    let titelsAsText = localStorage.getItem('titels');
+    let titlesAsText = localStorage.getItem('titles');
     let textsAsText = localStorage.getItem('texts');
-    if(titelsAsText && textsAsText) { 
-    titels = JSON.parse(titelsAsText);
+    if(titlesAsText && textsAsText) { 
+    titles = JSON.parse(titlesAsText);
     texts = JSON.parse(textsAsText);
 }
 }
 
  function loadTrash() {
-    let titelsTrashAsText = localStorage.getItem('titelsTrash');
+    let titlesTrashAsText = localStorage.getItem('titlesTrash');
     let textsTrashAsText = localStorage.getItem('textsTrash');
-    if(titelsTrashAsText && textsTrashAsText) { 
-    titelsTrash = JSON.parse(titelsTrashAsText);
+    if(titlesTrashAsText && textsTrashAsText) { 
+    titlesTrash = JSON.parse(titlesTrashAsText);
     textsTrash = JSON.parse(textsTrashAsText);
 }
 } 
@@ -154,17 +159,17 @@ function searchD() {                                           // Suchfunktion
     let content = document.getElementById('content');
     content.innerHTML = '';
 
-    for (let i = 0; i < titels.length; i++) {
-        let titel = titels[i];
+    for (let i = 0; i < titles.length; i++) {
+        let title = titles[i];
         let text = texts[i];
-        let titelTrash = titelsTrash[i];
+        let titleTrash = titlesTrash[i];
         let textTrash = textsTrash[i];
 
-        if(titel.toLowerCase().includes(searchD) || text.toLowerCase().includes(searchD)){
+        if(title.toLowerCase().includes(searchD) || text.toLowerCase().includes(searchD)){
         content.innerHTML += `
         <div id="note">
-                <div class="titelPin">
-                    <input id="title" type="text" placeholder="${titel}">
+                <div class="titlePin">
+                    <input id="title" type="text" placeholder="${title}">
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
@@ -174,11 +179,11 @@ function searchD() {                                           // Suchfunktion
                 </div>
         </div>`;
 
-        } else if(titelTrash.toLowerCase().includes(searchD) || textTrash.toLowerCase().includes(searchD)) {
+        } else if(titleTrash.toLowerCase().includes(searchD) || textTrash.toLowerCase().includes(searchD)) {
                 content.innerHTML += `
                 <div id="note">
-                    <div class="titelPin">
-                        <input id="title" type="text" placeholder="${titelTrash}">
+                    <div class="titlePin">
+                        <input id="title" type="text" placeholder="${titleTrash}">
 
                     </div>
                     <div class="text">
@@ -205,17 +210,17 @@ function searchM() {                                    // Suchfunktion
     let content = document.getElementById('content');
     content.innerHTML = '';
 
-    for (let i = 0; i < titels.length; i++) {
-        let titel = titels[i];
+    for (let i = 0; i < titles.length; i++) {
+        let title = titles[i];
         let text = texts[i];
-        let titelTrash = titelsTrash[i];
+        let titleTrash = titlesTrash[i];
         let textTrash = textsTrash[i];
 
-        if(titel.toLowerCase().includes(searchM) || text.toLowerCase().includes(searchM)){
+        if(title.toLowerCase().includes(searchM) || text.toLowerCase().includes(searchM)){
         content.innerHTML += `
         <div id="note">
-                <div class="titelPin">
-                    <input id="title" type="text" placeholder="${titel}">
+                <div class="titlePin">
+                    <input id="title" type="text" placeholder="${title}">
                 </div>
                 <div class="text">
                     <textarea it="text" cols="32" rows="7" placeholder="Notiz schreiben...">${text}</textarea>
@@ -225,11 +230,11 @@ function searchM() {                                    // Suchfunktion
                 </div>
         </div>`;
 
-        } else if(titelTrash.toLowerCase().includes(searchM) || textTrash.toLowerCase().includes(searchM)) {
+        } else if(titleTrash.toLowerCase().includes(searchM) || textTrash.toLowerCase().includes(searchM)) {
                 content.innerHTML += `
             <div id="note">
-                <div class="titelPin">
-                    <input id="title" type="text" placeholder="${titelTrash}">
+                <div class="titlePin">
+                    <input id="title" type="text" placeholder="${titleTrash}">
 
                 </div>
                 <div class="text">

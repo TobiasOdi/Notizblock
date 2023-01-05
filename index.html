@@ -8,43 +8,50 @@
     <title>Notizen</title>
 
     <!-- =========== Schriftart =========== -->
-    <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="./fonts.css" />
 
     <script src="./script.js"></script>
-
   </head>
 
   <body onload="render()">
-
-<!--      ============================== HEADER =============================== -->
+    <!--      ============================== HEADER =============================== -->
     <header id="header">
-
       <div class="head1">
         <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
         </div>
         <div>
           <p><b>YOUR</b> Notes</p>
         </div>
       </div>
-      
+
       <div class="search">
         <div>
-          <div><img src="./img/search.png" class="icon" alt="Bilder einer Lupe"></div>
-          <div><input id="searchD" onkeydown="searchD()" type="text" placeholder="Suchen" /></div>
+          <div>
+            <img src="./img/search.png" class="icon" alt="Bilder einer Lupe" />
+          </div>
+          <div>
+            <input
+              id="searchD"
+              onkeydown="searchD()"
+              type="text"
+              placeholder="Suchen"
+            />
+          </div>
         </div>
       </div>
 
       <div class="settings">
-        <div onclick="window.location.reload()"><img src="./img/load.png" class="icon" /></div>
+        <div onclick="window.location.reload()">
+          <img src="./img/load.png" class="icon" />
+        </div>
         <div><img src="./img/settings-3-48.jpg" class="icon" /></div>
       </div>
     </header>
 
     <section id="main">
-
       <!--========================== Sidebar ======================== -->
       <!-- ============= Desktop Ansicht ============= -->
       <article class="sideBar">
@@ -52,7 +59,11 @@
           <img src="./img/9042676_light_bulb_icon.png" class="icon" />
           <a>Notizen</a>
         </div>
-        <div onclick="renderTrash(), activeTrash()" class="cards trash" id="trash">
+        <div
+          onclick="renderTrash(), activeTrash()"
+          class="cards trash"
+          id="trash"
+        >
           <img src="./img/9025901_push_pin_icon.png" class="icon" />
           <a>Papierkorb</a>
         </div>
@@ -62,15 +73,32 @@
       <article class="sideBar nav-bar">
         <div class="searchM">
           <div>
-            <div><img src="./img/search.png" class="icon" alt="Bilder einer Lupe"></div>
-            <div><input id="searchM" onkeydown="searchM()" type="text" placeholder="Suchen" /></div>
+            <div>
+              <img
+                src="./img/search.png"
+                class="icon"
+                alt="Bilder einer Lupe"
+              />
+            </div>
+            <div>
+              <input
+                id="searchM"
+                onkeydown="searchM()"
+                type="text"
+                placeholder="Suchen"
+              />
+            </div>
           </div>
         </div>
         <div onclick="render(), activeNotesM()" class="cards notes" id="notesM">
           <img src="./img/9042676_light_bulb_icon.png" class="icon" />
           <a>Notizen</a>
         </div>
-        <div onclick="renderTrash(), activeTrashM()" class="cards trash" id="trashM">
+        <div
+          onclick="renderTrash(), activeTrashM()"
+          class="cards trash"
+          id="trashM"
+        >
           <img src="./img/9025901_push_pin_icon.png" class="icon" />
           <a>Papierkorb</a>
         </div>
@@ -81,27 +109,34 @@
       <article id="mainContent">
         <div id="contentFix">
           <div id="noteFix">
-            <div class="titelPin">
-                <input id="titel" type="text" placeholder="Titel">
-                <img onclick="addNote(), activeNotes()" src="./img/9025901_push_pin_icon.png" class="icon">
+            <div class="titlePin">
+              <input id="title" type="text" placeholder="Titel" />
+              <img
+                onclick="addNote(), activeNotes()"
+                src="./img/9025901_push_pin_icon.png"
+                class="icon"
+              />
             </div>
             <div class="text">
-                <textarea id="text" cols="32" rows="7" placeholder="Notiz schreiben..."></textarea>
+              <textarea
+                id="text"
+                cols="32"
+                rows="7"
+                placeholder="Notiz schreiben..."
+              ></textarea>
             </div>
           </div>
         </div>
 
-        <div id="content">
-        </div>
+        <div id="content"></div>
       </article>
     </section>
 
-
     <!-- ============== Content for rendering notes ===================== -->
 
-              <!-- <div id="note">
-                    <div class="titelPin">
-                        <input id="titel" type="text" placeholder="Titel">
+    <!-- <div id="note">
+                    <div class="titlePin">
+                        <input id="title" type="text" placeholder="Titel">
                         <img onclick="addNote()" src="./img/9025901_push_pin_icon.png" class="icon">
                     </div>
                     <div class="text">
@@ -110,8 +145,8 @@
                 </div> -->
 
     <!-- <div id="note">
-                <div class="titelPin">
-                    <input id="title" type="text" placeholder="${titel}">
+                <div class="titlePin">
+                    <input id="title" type="text" placeholder="${title}">
                     <img src="./img/9025901_push_pin_icon.png" class="icon">
                 </div>
                 <div class="text">
@@ -125,9 +160,9 @@
 
     <!-- ============== Content for rendering trash ===================== -->
 
-<!--      <div id="note">
-                <div class="titelPin">
-                    <input id="title" type="text" placeholder="${titelTrash}">
+    <!--      <div id="note">
+                <div class="titlePin">
+                    <input id="title" type="text" placeholder="${titleTrash}">
                     <img src="./img/9025901_push_pin_icon.png" class="icon">
                 </div>
                 <div class="text">
@@ -140,12 +175,12 @@
       </div>
  -->
 
-  <script>
-    hamburger = document.querySelector(".hamburger");
+    <script>
+      hamburger = document.querySelector(".hamburger");
       hamburger.onclick = function toggle() {
         navBar = document.querySelector(".nav-bar");
         navBar.classList.toggle("active");
-};
-  </script>
+      };
+    </script>
   </body>
 </html>
